@@ -1,1 +1,0 @@
-AP：wireless access point

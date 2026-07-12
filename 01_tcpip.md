@@ -141,3 +141,22 @@ Destination filename [c3560-ipservicesk9-mz.122-55.SE12.bin]?
 Writing c3560-ipservicesk9-mz.122-55.SE12.bin !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 12745998 bytes copied in 11.711 secs (1088378 bytes/sec)
 ```
+
+
+### **第一章总览
+本章主要介绍了网络模型（Networking Model）的概念，特别是目前最普及的 **TCP/IP 模型**。
+
+*   **TCP/IP 模型与分层：** TCP/IP 是一个协议族，定义了计算机如何进行通信。它通常分为五层：
+    1.  **应用层 (Application)：** 为应用程序提供接口，如 **HTTP/HTTPS**（用于网页浏览）、SMTP/POP3（用于电子邮件）。
+    2.  **传输层 (Transport)：** 提供端到端服务，如 **TCP**（提供错误恢复）和 **UDP**。
+    3.  **网络层 (Network)：** 负责寻址和路由。主要协议是 **IP (Internet Protocol)**，路由器通过 IP 地址转发数据包。
+    4.  **数据链路层 (Data Link)：** 定义在物理链路上传输数据的规则。
+    5.  **物理层 (Physical)：** 涉及物理连接，如电缆、电压信号和比特流传输。
+*   **交互机制：**
+    *   **同层交互 (Same-layer interaction)：** 两台计算机通过各自层级的**报头 (Header)** 进行通信。
+    *   **相邻层交互 (Adjacent-layer interaction)：** 同一台设备上，底层协议为上层协议提供服务。
+*   **封装与术语：** 数据在发送过程中逐层添加报头（数据链路层还会添加尾部），这个过程称为**封装 (Encapsulation)**。不同层的消息有特定名称：
+    *   传输层：**段 (Segment)**
+    *   网络层：**数据包 (Packet)**
+    *   数据链路层：**帧 (Frame)**
+*   **OSI 模型：** 共有七层。TCP/IP 的应用层对应 OSI 的上三层（应用、表示、会话层），其余层级基本对应。
