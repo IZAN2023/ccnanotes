@@ -1,6 +1,7 @@
-![[bc4217378f33071f184b9e4ca34dcfdc.png]]
+![NAT拓扑图](./assets/NATGRAPH.png)
 
 #### 重点输入（R1）
+
 ```bash
 interface Ethernet0/0
  ip address 218.1.1.1 255.255.255.224
@@ -24,19 +25,21 @@ ip route 0.0.0.0 0.0.0.0 218.1.1.2
 access-list 10 permit 10.1.1.0 0.0.0.255
 !
 ```
+
 #### 测试结果
+
 ```bash
-r1#show ip nat translations 
+r1#show ip nat translations
 Pro Inside global      Inside local       Outside local      Outside global
 --- 218.1.1.3          10.1.1.11          ---                ---
 tcp 218.1.1.1:8080     10.1.1.12:80       ---                ---
 icmp 218.1.1.6:38      10.1.1.13:38       218.1.1.2:38       218.1.1.2:38
-r1#show ip nat statistics   
+r1#show ip nat statistics
 Total active translations: 3 (1 static, 2 dynamic; 2 extended)
 Peak translations: 3, occurred 00:15:23 ago
 Outside interfaces:
   Ethernet0/0
-Inside interfaces: 
+Inside interfaces:
   Ethernet0/1
 Hits: 48  Misses: 0
 CEF Translated packets: 48, CEF Punted packets: 0
@@ -53,8 +56,6 @@ Appl doors: 0
 Normal doors: 0
 Queued Packets: 0
 ```
-
-
 
 ## 1. 静态 NAT，1:1
 
