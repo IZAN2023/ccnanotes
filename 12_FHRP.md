@@ -1,6 +1,6 @@
 ![FHRP拓扑图](./assets/FHRP.png)
 
-## VRRP 实现
+## HSRP 实现
 ```
 r1#show run 
 !
@@ -71,7 +71,45 @@ router ospf 1
 
 ```
 
-## 输出
+### 将 HSRP 改为 VRRP
+```
+r1#
+hostname r1
+
+interface Ethernet0/0
+ ip address 10.1.1.1 255.255.255.0
+
+ vrrp 10 ip 10.1.1.254
+ vrrp 10 priority 200
+ vrrp 10 preempt
+
+interface Ethernet0/1
+ ip address 192.168.1.1 255.255.255.0
+
+router ospf 1
+ passive-interface Ethernet0/0
+ network 10.1.1.0 0.0.0.255 area 0
+ network 192.168.1.0 0.0.0.255 area 0
+ 
+ 
+ r2#
+ hostname r2
+
+interface Ethernet0/0
+ ip address 10.1.1.2 255.255.255.0
+
+ vrrp 10 ip 10.1.1.254
+
+interface Ethernet0/1
+ ip address 192.168.2.1 255.255.255.0
+
+router ospf 1
+ passive-interface Ethernet0/0
+ network 10.1.1.0 0.0.0.255 area 0
+ network 192.168.2.0 0.0.0.255 area 0
+```
+## 输出（仅 vrrp，hsrp 模拟器有错误）
+
 #### R1
 ```
 r1#show vrrp brief 
@@ -81,12 +119,6 @@ Et0/0              10  200 3218       Y  Master  10.1.1.1        10.1.1.254
 ```
 #### R2
 ```
-r2#show run int e0/0
-interface Ethernet0/0
- ip address 10.1.1.2 255.255.255.0
- vrrp 10 ip 10.1.1.254
-end
-
 r2#sh vrrp br
 Interface          Grp Pri Time  Own Pre State   Master addr     Group addr
 Et0/0              10  100 3609       Y  Backup  10.1.1.1        10.1.1.254   
