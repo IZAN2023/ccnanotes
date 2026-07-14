@@ -187,10 +187,11 @@
   "lastOpenFiles": [
     "12_FHRP.md",
     "14_DHCP Snooping, Dynamic ARP Inspection, Port Security.md",
+    "13_VRF.md",
+    "assets/ch14.png",
     "11_NAT.md",
     "10_wireless.md",
     "09_acl.md",
-    "13_VRF.md",
     "assets/FHRP.png"
   ]
 }
