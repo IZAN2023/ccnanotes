@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "14_DHCP Snooping, Dynamic ARP Inspection, Port Security.md",
+                "file": "16_gre.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "14_DHCP Snooping, Dynamic ARP Inspection, Port Security"
+              "title": "16_gre"
             }
           }
         ]
@@ -185,9 +185,23 @@
   },
   "active": "80294aef5058c291",
   "lastOpenFiles": [
-    "12_FHRP.md",
+    "15_ipsec.md",
+    "16_gre.md",
     "14_DHCP Snooping, Dynamic ARP Inspection, Port Security.md",
     "13_VRF.md",
+    "assets/ipsec_pcap.png",
+    "assets/gre_ipv6.png",
+    "assets/gre_ip_in_ip6_pcap.png",
+    "assets/gre_ip_in_ip_pcap.png",
+    "assets/gre_ip_in_ip_ipsec.png",
+    "03_stp.md",
+    "07_eigrp.md",
+    "01_ip_addr.md",
+    "01_tcpip.md",
+    "01_osi.md",
+    "05_layer3_switching.md",
+    "04_static_route.md",
+    "12_FHRP.md",
     "assets/ch14.png",
     "11_NAT.md",
     "10_wireless.md",
