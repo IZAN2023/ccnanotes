@@ -1,6 +1,6 @@
 ## GRE隧道（IPinIP）
 
-![ip in ip](./gre_ip_in_ip_ipsec.png)
+![gre](./assets/gre_ipv6.png)
 
 ```bash
 r1#sh run
@@ -64,7 +64,7 @@ interface Ethernet0/1
 
 在R1与R3的链路上抓包：
 
-![ip in ip pcap](./gre_ip_in_ip_pcap.png)
+![ip in ip pcap](./assets/gre_ip_in_ip_pcap.png)
 
 ```
 10.1.1.2
@@ -84,7 +84,7 @@ interface Ethernet0/1
 
 ## GRE隧道（IPinIPv6）
 
-![ip in ipv6](./gre_ipv6.png)
+![ip in ipv6](./assets/gre_ipv6.png)
 
 ```bash
 r1#sh run
@@ -154,7 +154,7 @@ ipv6 address 2001:DB8:2:2::2/64
 
 在R1与R3的链路上抓包：
 
-![gre ip in ipv6 pcap](./gre_ip_in_ip6_pcap.png)
+![gre ip in ipv6 pcap](./assets/gre_ip_in_ip6_pcap.png)
 
 ```
 10.1.1.2

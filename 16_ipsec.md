@@ -1,4 +1,4 @@
-![ipsec](./gre_ip_in_ip_ipsec.png)
+![ipsec](./assets/gre_ip_in_ip_ipsec.png)
 
 ```bash
 r1#show run
@@ -234,7 +234,7 @@ R1 发现：10.1.1.2 → 10.2.2.2 匹配 ACL 101。
 
 在R1与R3的链路上抓包：
 
-![packet ipsec](./ipsec_pcap.png)
+![packet ipsec](./assets/ipsec_pcap.png)
 
 ```
 10.1.1.2
