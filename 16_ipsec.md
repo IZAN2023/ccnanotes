@@ -78,7 +78,7 @@ crypto ikev2 policy ike-policy
  proposal ike-prop-1
 !
 crypto ikev2 keyring ike-keyring
- peer r2
+ peer r1
   address 218.1.1.1
   pre-shared-key Cisco123
  !

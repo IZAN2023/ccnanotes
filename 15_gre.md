@@ -1,6 +1,6 @@
 ## GRE隧道（IPinIP）
 
-![gre](./assets/gre_ipv6.png)
+![gre](./assets/gre_ip_in_ip_ipsec.png)
 
 ```bash
 r1#sh run
@@ -160,7 +160,7 @@ ipv6 address 2001:DB8:2:2::2/64
 10.1.1.2
     │
     ▼
-【R1 通过静态路由得知要走tunnel 0，将 IP 包头和 payload 原封不动，加上GRE头，并且打上新的ipv6包头】
+【R1 通过静态路由得知要走tunnel 1，将 IP 包头和 payload 原封不动，加上GRE头，并且打上新的ipv6包头】
     │
   【R3 只能看到外层IPv6包头，往下一跳转发】
     │

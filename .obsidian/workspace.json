@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "15_gre.md",
+                "file": "17_enable_sec.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "15_gre"
+              "title": "17_enable_sec"
             }
           },
           {
@@ -197,9 +197,11 @@
   },
   "active": "80294aef5058c291",
   "lastOpenFiles": [
-    "assets/gre_ipv6.png",
-    "15_gre.md",
+    "18_aaa.md",
+    "17_enable_sec.md",
     "16_ipsec.md",
+    "15_gre.md",
+    "assets/gre_ipv6.png",
     "14_DHCP Snooping, Dynamic ARP Inspection, Port Security.md",
     "13_VRF.md",
     "assets/ipsec_pcap.png",
