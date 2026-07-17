@@ -68,18 +68,18 @@ sudo systemctl stop freeradius
 vim /etc/freeradius/3.0/clients.conf
 # 添加如下配置
 client c8kv {
-ipaddr = 10.1.16.27
-proto = \*
-secret = Cisco123
-nas_type = cisco
+       ipaddr = 10.1.16.27
+       proto = *
+       secret = Cisco123
+       nas_type = cisco
 }
 
 # 编辑 /etc/freeradius/3.0/users 添加用户：
 vim /etc/freeradius/3.0/users
 # 添加如下配置：
 bob Cleartext-Password := "hello"
-Service-Type = Login-User,
-cisco-avpair = "shell:priv-lvl=15"
+    Service-Type = Login-User,
+    cisco-avpair = "shell:priv-lvl=15"
 
 
 
@@ -96,6 +96,9 @@ freeradius -X
 username admin password cisco
 enable secret cisco
 
+# 启用 aaa
+aaa new-model
+
 # 配置 radius 服务器
 radius server fr
   address ipv4 10.1.16.61 auth-port 1812 acct-port 1813
@@ -105,9 +108,6 @@ aaa group server radius fr-group
   server name fr
 
 
-# 启用 aaa
-aaa new-model
-
 # 保持默认的认证和授权方法
 aaa authentication login default local
 aaa authorization exec default local
@@ -115,9 +115,12 @@ aaa authorization exec default local
 # 设置自定义的认证和授权方法，local办法作为后备手段，以防止radius服务器联系不上时，无法登录路由器
 aaa authorization exec fr-exec group fr-group local
 aaa authentication login fr-login group fr-group local
+aaa accounting exec fr-accounting start-stop group fr-group  
 
 # 在vty 接口上绑定自定义的认证和授权办法
 line vty 0 4
-  login authentication fr-login
-  authorization exec fr-exec
+ authorization exec fr-exec
+ accounting exec fr-accounting                                           
+ login authentication fr-login
+ transport input telnet ssh
 ```
