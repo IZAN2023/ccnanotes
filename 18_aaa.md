@@ -107,7 +107,6 @@ radius server fr
 aaa group server radius fr-group
   server name fr
 
-
 # 保持默认的认证和授权方法
 aaa authentication login default local
 aaa authorization exec default local

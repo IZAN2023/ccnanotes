@@ -1,0 +1,36 @@
+---
+# ios_config 的幂等性主要依赖于对 running-config 的文本匹配。
+# 对于 no 命令删除配置这样的操作，通常需要额外编写判断逻辑来实现幂等。
+
+- name: 撤销 IOS-XE 路由器配置
+  hosts: routers
+  gather_facts: no
+
+  tasks:
+    - name: 获取 running-config
+      cisco.ios.ios_command:
+        commands:
+          - show running-config
+      register: running_config
+      changed_when: false
+
+    - name: 删除 Loopback10
+      cisco.ios.ios_config:
+        lines:
+          - no interface Loopback10
+      when: "'interface Loopback10' in running_config.stdout[0]"
+
+    - name: 删除 NTP 服务器
+      cisco.ios.ios_config:
+        lines:
+          - no ntp server 192.168.17.1
+      when: "'ntp server 192.168.17.1' in running_config.stdout[0]"
+
+    - name: 恢复默认 hostname
+      cisco.ios.ios_config:
+        lines:
+          - no hostname
+
+    - name: 保存配置到 startup-config
+      cisco.ios.ios_config:
+        save_when: modified

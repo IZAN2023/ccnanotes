@@ -1,0 +1,16 @@
+---
+- name: 关闭三台机器的 Web 服务
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: 彻底卸载 nginx
+      apt:
+        name: nginx
+        state: absent
+        purge: true
+
+    - name: 删除测试首页
+      file:
+        path: /var/www/html/index.html
+        state: absent

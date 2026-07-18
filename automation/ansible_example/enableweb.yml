@@ -1,0 +1,22 @@
+---
+- name: 配置三台机器的 Web 服务
+  hosts: webservers
+  become: true                # 相当于 sudo
+
+  tasks:
+    - name: 安装 nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: true    # 更新 apt 缓存，相当于 apt update
+
+    - name: 确保 nginx 服务已启动并开机自启
+      systemd:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: 写入测试首页，标明是哪台机器
+      copy:
+        content: "<h1>Hello World {{ ansible_host }}</h1>"
+        dest: /var/www/html/index.html
